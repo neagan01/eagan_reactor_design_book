@@ -115,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Chapter%201%20-%20Introduction%20to%20chemical%20reaction%20engineering.html">
-   Chapter 1!!!!!!!!!!!
+   Chapter 1
   </a>
  </li>
  <li class="toctree-l1">
@@ -401,17 +401,17 @@ After the book has been created, the content can be updated at any time but will
 <p><strong>Making the book available online through GitHub</strong></p>
 <ol class="simple">
 <li><p>Create a GitHub account if you have not already. You will create a username with it.</p></li>
-<li><p>Create a new repository. It must be public, and you should have it generate a README file. Name it whatever you like; for this case, we will call it “book_draft”</p></li>
+<li><p>Create a new repository. It must be public, and you should have it generate a README file. Name it whatever you like; for this case, we will call it “bookname_online”</p></li>
 <li><p>In Anaconda, install “git” into your 3.7 environment.</p></li>
 <li><p>In Anaconda prompt (3.7 environment), install the GitHub pages import tool with command “pip install ghp-import”</p></li>
-<li><p>In Anaconda prompt (in 3.7), navigate to your GitHub folder (or whichever you prefer) and clone your repository. Do this by first finding the url of your repository which will be something like <a class="reference external" href="https://github.com/username/book_draft">https://github.com/username/book_draft</a>. In the prompt enter the command “git clone <a class="reference external" href="https://github.com/username/book_draft">https://github.com/username/book_draft</a>” or whatever URL is appropriate.</p></li>
-<li><p>Copy the contents of the book you previously created into this folder. Assuming that you are in the GitHub folder and that both “bookname” and “book_draft” are as well, use the command “cp -r bookname/* book_draft/” to recursively (-r) copy (cp) all contents (star) in the bookname folder (bookname/) to your new repository (book_draft/).</p></li>
+<li><p>In Anaconda prompt (in 3.7), navigate to your GitHub folder (or whichever you prefer) and clone your repository. Do this by first finding the url of your repository which will be something like <a class="reference external" href="https://github.com/username/bookname_online">https://github.com/username/bookname_online</a>. In the prompt enter the command “git clone <a class="reference external" href="https://github.com/username/bookname_online">https://github.com/username/bookname_online</a>” or whatever URL is appropriate.</p></li>
+<li><p>Copy the contents of the book you previously created into this folder. Assuming that you are in the GitHub folder and that both “bookname” and “book_draft” are as well, use the command “cp -r bookname/* bookname_online/” to recursively (-r) copy (cp) all contents (star) in the bookname folder (bookname/) to your new repository (bookname_online/).</p></li>
 <li><p>Enter the book_draft folder. In it you should see a “_build” folder which holds your html files.</p></li>
 <li><p>Enter the command “ghp-import -n -p -f _build/html” to create your book.</p></li>
 <li><p>To find the url for your new book, first go to your repository online. Then click “settings” along the top bar under your repository location, then click “pages” along the left toolbar, and there you will see the url. Anyone can access your book at this link. <strong>Note: it can take a few minutes to upload</strong></p></li>
 </ol>
-<p><strong>Updating your book</strong>
-You can upload a new version of your book at any time by rebuilding it as noted above and then re-importing it by again entering the main folder and using the command “ghp-import -n -p -f _build/html”. Note that it can take a few minutes to update.</p>
+<p><strong>Updating your online book</strong>
+First note that your offline book (e.g., bookname) and your online book (e.g., bookname_online) are completely separate. Changing one will in no way impact the other. If you wish to update your online book, change the files in the bookname_online folder, then back up and enter “jupyter-book build bookname_online” to rebuild the book. Then enter the bookname_online folder and again use the command “ghp-import -n -p -f _build/html” to update. Note that it can take a few minutes to update. An alternative strategy would be to only edit the offline version of the book and then subsequently copy of the offline book files into the online version (as you did before), then navigate into bookname_online just to update.</p>
 <section id="additional-resources-for-building-jupyter-notebooks-and-textbooks-for-chemical-engineering-courses">
 <h2>Additional resources for building Jupyter notebooks and textbooks for chemical engineering courses<a class="headerlink" href="#additional-resources-for-building-jupyter-notebooks-and-textbooks-for-chemical-engineering-courses" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
