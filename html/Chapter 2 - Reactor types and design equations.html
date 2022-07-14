@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 2 &#8212; Chemical Reactor Design</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Appendix A: Code templates" href="Appendix%20A%20Code%20Templates.html" />
+    <link rel="prev" title="Chapter 1" href="Chapter%201%20-%20Introduction%20to%20chemical%20reaction%20engineering.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Tufts_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Chemical Reactor Design</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter%201%20-%20Introduction%20to%20chemical%20reaction%20engineering.html">
+   Chapter 1
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix%20A%20Code%20Templates.html">
+   Appendix A: Code templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix%20Z%20Creating%20a%20Jupyter%20textbook.html">
+   Appendix Z: Creating your own Jupyter Book textbook
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Chapter 2 - Reactor types and design equations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapter 2 - Reactor types and design equations.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Chapter 2 - Reactor types and design equations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reactor-types-and-design-equations">
+   Reactor types and design equations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#topics">
+     Topics:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-concepts-of-chemical-reactions">
+     2.1. Basic concepts of chemical reactions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-1-general-reaction-types-and-examples">
+       Fig. 2-1. General reaction types and examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reaction-stoichometry">
+     2.2. Reaction stoichometry
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-2-stoichometric-coefficients-and-production-rates-for-various-species-in-generic-reaction-aa-bb-rightarrow-cc-dd">
+       Fig 2.2. Stoichometric coefficients and production rates for various species in generic reaction
+       <span class="math notranslate nohighlight">
+        \(aA+bB\rightarrow cC+dD\)
+       </span>
+       .
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-3-types-of-reaction-rates">
+       Fig 2.3. Types of reaction rates.
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reactor-design-equations">
+     2.3. Reactor design equations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-4-a-generic-system-the-system-is-also-referred-to-as-a-control-volume-as-it-is-meant-to-describe-the-volume-within-controlled-borders">
+       Fig. 2.4. A generic system. The “system” is also referred to as a “control volume” as it is meant to describe the volume within controlled borders.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-5-the-subdivision-of-one-generic-control-volume-v-s-into-smaller-control-volumes">
+       Fig. 2.5. The subdivision of one generic control volume V_s into smaller control volumes.
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reactor-types-batch-cstr-pfr-pbr-fbr">
+     2.4. Reactor types: batch, CSTR, PFR, PBR, FBR
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-and-reactor-sizing-basics">
+     2.5. Conversion and reactor sizing basics
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 2</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reactor-types-and-design-equations">
+   Reactor types and design equations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#topics">
+     Topics:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-concepts-of-chemical-reactions">
+     2.1. Basic concepts of chemical reactions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-1-general-reaction-types-and-examples">
+       Fig. 2-1. General reaction types and examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reaction-stoichometry">
+     2.2. Reaction stoichometry
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-2-stoichometric-coefficients-and-production-rates-for-various-species-in-generic-reaction-aa-bb-rightarrow-cc-dd">
+       Fig 2.2. Stoichometric coefficients and production rates for various species in generic reaction
+       <span class="math notranslate nohighlight">
+        \(aA+bB\rightarrow cC+dD\)
+       </span>
+       .
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-3-types-of-reaction-rates">
+       Fig 2.3. Types of reaction rates.
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reactor-design-equations">
+     2.3. Reactor design equations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-4-a-generic-system-the-system-is-also-referred-to-as-a-control-volume-as-it-is-meant-to-describe-the-volume-within-controlled-borders">
+       Fig. 2.4. A generic system. The “system” is also referred to as a “control volume” as it is meant to describe the volume within controlled borders.
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fig-2-5-the-subdivision-of-one-generic-control-volume-v-s-into-smaller-control-volumes">
+       Fig. 2.5. The subdivision of one generic control volume V_s into smaller control volumes.
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reactor-types-batch-cstr-pfr-pbr-fbr">
+     2.4. Reactor types: batch, CSTR, PFR, PBR, FBR
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-and-reactor-sizing-basics">
+     2.5. Conversion and reactor sizing basics
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2">
+<h1>Chapter 2<a class="headerlink" href="#chapter-2" title="Permalink to this headline">#</a></h1>
+<section id="reactor-types-and-design-equations">
+<h2>Reactor types and design equations<a class="headerlink" href="#reactor-types-and-design-equations" title="Permalink to this headline">#</a></h2>
+<section id="topics">
+<h3>Topics:<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h3>
+<p>2.1. Basic reaction types and stoichiometry <br />
+2.2. Reaction stoichiometry <br />
+2.3. Reactor design equations <br />
+2.4. Reactor types: batch, CSTR, PFR, PBR, FBR <br />
+2.5. Conversion and reactor sizing basics</p>
+</section>
+<section id="basic-concepts-of-chemical-reactions">
+<h3>2.1. Basic concepts of chemical reactions<a class="headerlink" href="#basic-concepts-of-chemical-reactions" title="Permalink to this headline">#</a></h3>
+<p>A <strong>chemical reaction</strong> is the change of one or more of the following properties of one or more chemical entities:</p>
+<ul class="simple">
+<li><p>Types of atoms</p></li>
+<li><p>Numbers of atoms</p></li>
+<li><p>Structure</p></li>
+<li><p>Configuration</p></li>
+</ul>
+<p>We refer to the chemical entities we are starting with as the <strong>reactants</strong> and those which we are forming as the <strong>products</strong>. We use an arrow to separate these with the reactants on the left and products on the right. This arrow can point forward (<span class="math notranslate nohighlight">\(\rightarrow\)</span>), backward (<span class="math notranslate nohighlight">\(\leftarrow\)</span>), or  both ways (<span class="math notranslate nohighlight">\(\leftrightarrow\)</span>, <span class="math notranslate nohighlight">\(\rightleftarrows\)</span>, or <span class="math notranslate nohighlight">\(\rightleftharpoons\)</span>). A “<span class="math notranslate nohighlight">\(\rightarrow\)</span>” is often used generically and implies nothing further about the reaction than the identies of the reactants and the products. It can also be used to imply that the reaction is <strong>irreversible</strong> and only runs in the forward direction. Similarly, “<span class="math notranslate nohighlight">\(\leftarrow\)</span>” may imply that the reaction is irreversible and only runs in the reverse direction. Two-directional arrows imply that the reaction is <strong>reversible</strong> and can operate in either direction. Reversibility will be discussed in further detail in Chapter 4.</p>
+<p>It should be noted that the specification as an entity as a “reactant” or “product” is more related to the situation than the reaction. By writing a reaction as <span class="math notranslate nohighlight">\(A\rightleftarrows B\)</span>, for example, we are implying that we are going to have <span class="math notranslate nohighlight">\(A\)</span> to start with and form <span class="math notranslate nohighlight">\(B\)</span> as the reaction progresses. If we had started with <span class="math notranslate nohighlight">\(B\)</span>, however, we might have written the same reaction as <span class="math notranslate nohighlight">\(B\rightleftarrows A\)</span>. In the former case <span class="math notranslate nohighlight">\(A\)</span> is the reactant while in the latter case <span class="math notranslate nohighlight">\(B\)</span> is the reactant. When we look at a reaction equation, however, we will assume it matches the situation at hand and refer to the entities on the left as reactants and those on the right as products.</p>
+<p>We can consider four general classes of reactions which can result in these. They include:</p>
+<ul class="simple">
+<li><p>Isomerization: <span class="math notranslate nohighlight">\( A\rightleftarrows B \)</span></p></li>
+<li><p>Decomposition: <span class="math notranslate nohighlight">\( A\rightleftarrows B + C\)</span></p></li>
+<li><p>Combination: <span class="math notranslate nohighlight">\( A + B \rightleftarrows C\)</span></p></li>
+<li><p>Complex: <span class="math notranslate nohighlight">\( A + B \rightleftarrows C + D\)</span></p></li>
+</ul>
+<p><strong>Isomerization</strong> involves a single reactant and a single product. Some examples include double bond isomerization, skeletal isomerization, ring opening/closing, and stereoisomerization. One specific example is the isomerization of glucose (a sugar with a six-membered ring) to fructose (a sugar with a five-membered ring). This is performed because fructose tastes sweeter. High-fructose corn syrup is therefore a mixture of sugars high in fructose which is therefore particularly sweet.</p>
+<p><strong>Decomposition</strong> involves the conversion of one molecule into two or more smaller ones. Some examples include dehydration, dehydrogenation, decarbonylation, and decarboxylation. Two particularly interesting reactions are short alkane dehydrogenation and short alcohol dehydration. Both yield short alkenes such as ethene and propene, high-volume molecules which serve as building blocks for a wide range of products including polyethylene and polypropylene. Both dehydrogenation and dehydration are considered to be more sustainable alternatives to conventional methods for alkene synthesis-cataltyic cracking of heavy fuel oils. Alkane dehydrogenation still relies on a fossil feedstock (natural gas), but it is generally much cleaner than oil. Alcohols, on the other hand, can be obtained from biomass. Most notably is ethanol, which comprises over 10% of all gasoline currently consumed in the United States.</p>
+<p><strong>Combination</strong> is the reverse of decomposition, involving more than one entity combining to form one larger one. A common example is polymerization or oligomerization, the term used for polymerization when only a few monomers react (~2-10). Another different but very important example is ethylene hydrochlorination. The product (ethylene dichloride) is used to produce poly(vinyl chloride), or PVC.</p>
+<p><strong>Complex</strong> reactions involve some combination of the former three and are generally observed. Intermolecular dehydration of alcohols, for example, is essentially a combination reaction but also releases water and therefore in some sense a decomposition reaction. One could also write a chemical reaction that formally involves many individual steps, such as the conversion of 10 ethylene molecules to ortho-xylene, butene, and hydrogen. Another particularly interesting example is the oxidation of para-xylene to produce terephthalic acid and water. Terephthalic acid is co-polymerized with ethylene glycol to produce PET (also known as PETE), the main plastic in water bottles. The ethylene glycol is commonly sourced from biomass, leading to companies calling the subsequent bottles, “plant bottles.” It is also possible to source the para-xylene from biomass, but it is more commonly sourced from petroleum.</p>
+<p><img alt="C2-F1" src="_images/C2-F1.png" /></p>
+<section id="fig-2-1-general-reaction-types-and-examples">
+<h4>Fig. 2-1. General reaction types and examples<a class="headerlink" href="#fig-2-1-general-reaction-types-and-examples" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="reaction-stoichometry">
+<h3>2.2. Reaction stoichometry<a class="headerlink" href="#reaction-stoichometry" title="Permalink to this headline">#</a></h3>
+<p>The rate at which a species <span class="math notranslate nohighlight">\(j\)</span> is produced due to a chemical reaction is given the symbol <span class="math notranslate nohighlight">\(r_j\)</span>. Note that this value is generally positive for products and negative for reactants. The rate of “consumption” of j can be therefore thought of as <span class="math notranslate nohighlight">\(-r_j\)</span>.</p>
+<p>This is related to the rate of the reaction itself (<span class="math notranslate nohighlight">\(r\)</span>) by the stoichiometric coefficient for the reaction, <span class="math notranslate nohighlight">\(\nu_j\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[r_j = \nu_j \cdot r\]</div>
+<p>It is very easy to invert this accidentally. Think about the following example to sort things out. Consider the reaction <span class="math notranslate nohighlight">\(A+2B\rightarrow C+3D\)</span>. The rate of this reaction is <span class="math notranslate nohighlight">\(r\)</span>, and the stoichiometric coefficients are <span class="math notranslate nohighlight">\(\nu_A=-1\)</span>, <span class="math notranslate nohighlight">\(\nu_B=-2\)</span>, <span class="math notranslate nohighlight">\(\nu_C=1\)</span>, and <span class="math notranslate nohighlight">\(\nu_D=3\)</span>. The rates of production are therefore <span class="math notranslate nohighlight">\(r_A=-r\)</span>, <span class="math notranslate nohighlight">\(r_B=-2r\)</span>, <span class="math notranslate nohighlight">\(r_C=r\)</span>, and <span class="math notranslate nohighlight">\(r_D=3r\)</span>. In words, <span class="math notranslate nohighlight">\(r_A=-r\)</span> is saying that “every time the reaction occurs, one A is consumed.” Similarly, <span class="math notranslate nohighlight">\(r_D=3\)</span> means that “every time the reaction occurs, three D are produced.” The table below shows this for some generic reaction <span class="math notranslate nohighlight">\(aA+bB\rightarrow cC+dD\)</span>.</p>
+<p><img alt="C2-F2" src="_images/C2-F2.png" /></p>
+<section id="fig-2-2-stoichometric-coefficients-and-production-rates-for-various-species-in-generic-reaction-aa-bb-rightarrow-cc-dd">
+<h4>Fig 2.2. Stoichometric coefficients and production rates for various species in generic reaction <span class="math notranslate nohighlight">\(aA+bB\rightarrow cC+dD\)</span>.<a class="headerlink" href="#fig-2-2-stoichometric-coefficients-and-production-rates-for-various-species-in-generic-reaction-aa-bb-rightarrow-cc-dd" title="Permalink to this headline">#</a></h4>
+<p>This can be useful to relate production rates of different species as well by noting that <span class="math notranslate nohighlight">\(r=\frac{r_j}{\nu_j}\)</span>. For the generic case, this leads to:</p>
+<div class="math notranslate nohighlight">
+\[r=\frac{r_A}{-a}=\frac{r_B}{-b}=\frac{r_C}{c}=\frac{r_D}{d}\]</div>
+<p>Rates are often measured intensively, and different nomenclature is used to distinguish the different possible bases. <span class="math notranslate nohighlight">\(r\)</span> alone is generally used to convey rate per volume, <span class="math notranslate nohighlight">\(r'\)</span> conveys rate per mass, <span class="math notranslate nohighlight">\(r''\)</span> conveys rate per surface area, and <span class="math notranslate nohighlight">\(r'''\)</span> conveys rate per “site” (used when a reaction occurs at a distinct location, e.g., catalysts).</p>
+<p><img alt="C2-F3" src="_images/C2-F3.png" /></p>
+</section>
+<section id="fig-2-3-types-of-reaction-rates">
+<h4>Fig 2.3. Types of reaction rates.<a class="headerlink" href="#fig-2-3-types-of-reaction-rates" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="reactor-design-equations">
+<h3>2.3. Reactor design equations<a class="headerlink" href="#reactor-design-equations" title="Permalink to this headline">#</a></h3>
+<p>In future parts of this course, we will discuss what affects reaction rates and why, but for now we will discuss how to design a reactor assuming we already have this knowledge.</p>
+<p>First we must return to the general <strong>material balance</strong> equation for a system of unspecified shape. Here we will work with <strong>mole balances</strong> out of convenience, though we could just as easily work with mass balances. For the majority of the course, moles will be more useful. Here we use <span class="math notranslate nohighlight">\(F_j\)</span> do denote the molar flow rate of species <span class="math notranslate nohighlight">\(j\)</span> (with units of moles per time), while <span class="math notranslate nohighlight">\(N_j\)</span> is the amount of moles (with units of only moles).</p>
+<p>Consider a generic system as shown in Fig. 2.4. below:</p>
+<p><img alt="C2-F4" src="_images/C2-F4.png" /></p>
+<section id="fig-2-4-a-generic-system-the-system-is-also-referred-to-as-a-control-volume-as-it-is-meant-to-describe-the-volume-within-controlled-borders">
+<h4>Fig. 2.4. A generic system. The “system” is also referred to as a “control volume” as it is meant to describe the volume within controlled borders.<a class="headerlink" href="#fig-2-4-a-generic-system-the-system-is-also-referred-to-as-a-control-volume-as-it-is-meant-to-describe-the-volume-within-controlled-borders" title="Permalink to this headline">#</a></h4>
+<p>The generic material balance is:</p>
+<div class="math notranslate nohighlight">
+\[In - Out + Generation = Accumulation\]</div>
+<p>In terms of symbols in the diagram, this becomes:</p>
+<div class="math notranslate nohighlight">
+\[F_{j0} - F_j + G_j = \frac{dN_j}{dt}\]</div>
+<p>Now we will not that <strong>if there are no spatial variations in rate</strong>, then</p>
+<div class="math notranslate nohighlight">
+\[G_j=r_j\cdot V_s\]</div>
+<p>Generally speaking there are spatial variations, however, so we will consider this control volume to be the sum of smaller volumes <span class="math notranslate nohighlight">\(V_i\)</span> which do not have spatial variations (Fig. 2.5).</p>
+<p><img alt="C2-F5" src="_images/C2-F5.png" /></p>
+</section>
+<section id="fig-2-5-the-subdivision-of-one-generic-control-volume-v-s-into-smaller-control-volumes">
+<h4>Fig. 2.5. The subdivision of one generic control volume V_s into smaller control volumes.<a class="headerlink" href="#fig-2-5-the-subdivision-of-one-generic-control-volume-v-s-into-smaller-control-volumes" title="Permalink to this headline">#</a></h4>
+<p>As such, we can note that:</p>
+<div class="math notranslate nohighlight">
+\[G_j=\sum{r_{j,i}\cdot V_i}\]</div>
+<p>We can further expand on this by noting that an infinestimally small volume cannot have spacial variation, thus we can subdivide our volume into infinite ones which are infinitesimally small and thus write the corresponding generation term:</p>
+<div class="math notranslate nohighlight">
+\[G_j=\int^{V_s}{r_j\cdot dV}\]</div>
+<p>Returning to the material balance equation therefore yields the following <strong>fundamental reactor design equation</strong>:</p>
+<div class="math notranslate nohighlight">
+\[F_{j0}-F_j+\int^{V_s}{r_j\cdot dV}=\frac{dN_j}{dt}\]</div>
+<p>This is the starting point to derive any reactor design equation.</p>
+</section>
+</section>
+<section id="reactor-types-batch-cstr-pfr-pbr-fbr">
+<h3>2.4. Reactor types: batch, CSTR, PFR, PBR, FBR<a class="headerlink" href="#reactor-types-batch-cstr-pfr-pbr-fbr" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="conversion-and-reactor-sizing-basics">
+<h3>2.5. Conversion and reactor sizing basics<a class="headerlink" href="#conversion-and-reactor-sizing-basics" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Chapter%201%20-%20Introduction%20to%20chemical%20reaction%20engineering.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 1</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Appendix%20A%20Code%20Templates.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix A: Code templates</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Nathaniel Eagan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
