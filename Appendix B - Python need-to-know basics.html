@@ -351,8 +351,38 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-python-in-the-most-basic-sense">
-   What is Python in the most basic sense?
+  <a class="reference internal nav-link" href="#what-is-python">
+   What is Python?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-is-this-different-from-matlab">
+   How is this different from MATLAB?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-some-pros-and-cons-of-python-compared-to-matlab">
+   What are some pros and cons of Python compared to MATLAB?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#do-i-need-to-care-about-the-python-version">
+   Do I need to care about the Python version?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-should-i-start">
+   Where should I start?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-packages-do-i-absolutely-need">
+   What packages do I absolutely need?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#which-python-programs-will-i-use-most-when-translating-from-matlab">
+   Which Python programs will I use most when translating from MATLAB?
   </a>
  </li>
 </ul>
@@ -375,8 +405,38 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-python-in-the-most-basic-sense">
-   What is Python in the most basic sense?
+  <a class="reference internal nav-link" href="#what-is-python">
+   What is Python?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-is-this-different-from-matlab">
+   How is this different from MATLAB?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-some-pros-and-cons-of-python-compared-to-matlab">
+   What are some pros and cons of Python compared to MATLAB?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#do-i-need-to-care-about-the-python-version">
+   Do I need to care about the Python version?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-should-i-start">
+   Where should I start?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-packages-do-i-absolutely-need">
+   What packages do I absolutely need?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#which-python-programs-will-i-use-most-when-translating-from-matlab">
+   Which Python programs will I use most when translating from MATLAB?
   </a>
  </li>
 </ul>
@@ -391,10 +451,78 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="appendix-b-python-need-to-know-basics">
 <h1>Appendix B Python need-to-know basics<a class="headerlink" href="#appendix-b-python-need-to-know-basics" title="Permalink to this headline">#</a></h1>
-<section id="what-is-python-in-the-most-basic-sense">
-<h2>What is Python in the most basic sense?<a class="headerlink" href="#what-is-python-in-the-most-basic-sense" title="Permalink to this headline">#</a></h2>
-<p>Python is a high-level computing language–a way of executing and interpreting commands that prioritizes human readibility. It does not on its own really include any “functionality” since it is just a language. Similarly “English” is a language, it is not a book or a speech or a movie…it is simply a language. In order to use Python, you need “packages” which consist of Python codes (as well as others) that let you do useful things like math, plotting, etc.</p>
-<p>itself is a programming language and in itself does not really include any programs, functions, or an interface. This is in contrast to MATLAB, which is a language based on the C/C++ languages but also</p>
+<p>*Need just some basic understanding to use Python for simple chemical engineering problem? Here’s all you really “need” to know.</p>
+<section id="what-is-python">
+<h2>What is Python?<a class="headerlink" href="#what-is-python" title="Permalink to this headline">#</a></h2>
+<p>Python is a high-level computing language–a way of executing and interpreting commands–that prioritizes human readibility. It does not on its own include much “functionality” since it is simply a “language.” In order to use Python, you will need “packages” which consist of codes written in Python and other languages that allow you to do more complex work such as high-level math, plotting, data sorting, etc.</p>
+</section>
+<section id="how-is-this-different-from-matlab">
+<h2>How is this different from MATLAB?<a class="headerlink" href="#how-is-this-different-from-matlab" title="Permalink to this headline">#</a></h2>
+<p>Many in chemical engineering who are new to Python are likely transitioning from MATLAB, the main software originally introduced throughout the curriculum. MATLAB is different from Pythong in a few key ways. Not only is it a language (based on C/C++), it is also a full program that includes a wide array of packages already downloaded. Additionally, MATLAB includes its own interface. Python, on the other hand, is used with a variety of “integrated development environments,” or IDEs. Popular choices include Spyder (which has a fairly MATLAB-esque feel), Jupyter Notebooks (which allows for codes to be provided alongside outputs and interchanged with long text blocks), JupyterLab (an evolution of Jupyter Notebook which brings multiple utilities together), PyCharm, IDLE, Atom, and Thonny.</p>
+</section>
+<section id="what-are-some-pros-and-cons-of-python-compared-to-matlab">
+<h2>What are some pros and cons of Python compared to MATLAB?<a class="headerlink" href="#what-are-some-pros-and-cons-of-python-compared-to-matlab" title="Permalink to this headline">#</a></h2>
+<p>The simplest benefit to Python is that it is free, while MATLAB requires a license which can cost as much as $2,000 or more unless you have lower-cost access through a university.</p>
+<p>One key difference that has both pros and cons is that Python is not really “built” for anything other than being “intuitive.” MATLAB, on the other hand, is built deliberately for computational work, and in many ways it is “optimized” for chemical engineering work. Everything you need is available and meant to work when downloaded. Python, on the other hand, is commonly used for not only computation/data science but also for software development, website creation, design, etc. The fact that Python is “open-source” can on one hand make it difficult to find the exact solution to your problem, but on the other hand allows for a large community to come up with solutions and easily share them on forums such as Stack Overflow.</p>
+<p>The major “pro” for Python that comes from these facts is its adaptability. Those who learn Python can use it anywhere, while those who use MATLAB have to hope they can find a license (or pay for one) to use it. Furthermore, those who learn how to work with Python can apply their knowledge to problems outside the traditional chemical engineering scope. Such skills could enhance communication, foster collaboration, or facilitate a role transition.</p>
+<p>All of these benefits are very clearly understood by the broader community. The TIOBE organization specializes in evaluating software quality and as of 2022 ranked Python the #1 programming language while MATLAB is listed at only #24 (<a class="reference external" href="https://www.tiobe.com/tiobe-index/">https://www.tiobe.com/tiobe-index/</a>). Other languages of note inlcude C, Java, and C++.</p>
+</section>
+<section id="do-i-need-to-care-about-the-python-version">
+<h2>Do I need to care about the Python version?<a class="headerlink" href="#do-i-need-to-care-about-the-python-version" title="Permalink to this headline">#</a></h2>
+<p>Yes. While some syntax is the same between different versions, some can vary drastically. A slightly older Python 2 code will likely not function the same way if run in Python 3.</p>
+<p>Fortunately, there are ways to simulate a Python 2 environment if you want to use a Python 2 code.</p>
+</section>
+<section id="where-should-i-start">
+<h2>Where should I start?<a class="headerlink" href="#where-should-i-start" title="Permalink to this headline">#</a></h2>
+<p>A good place to start is <a class="reference external" href="http://Anaconda.com">Anaconda.com</a>. Anaconda is a “distribution” of Python meaning that it includes the code, packages, IDEs, and various utilities to manage packages. The installation is free.</p>
+<p>Once you download Anaconda, it is best to start with some of their simple tutorials. One will be added here eventually. If you are coming from MATLAB, it may be best to start with Spyder. My preference is JupyterLab (which I’m actively writing this with).</p>
+<p><strong>Important note:</strong> there are likely multiple different Python environments on your computer between one the one Anaconda installs, one you or another may have installed, or ones that computer programs create for their own use. To access Python in a command line manner and access the packages you downloaded with Anaconda, you <strong>need to use the Anaconda prompt, not the normal command prompt.</strong> The regular command prompt does not know about the packages you downloaded in Anaconda and will not work correctly.</p>
+</section>
+<section id="what-packages-do-i-absolutely-need">
+<h2>What packages do I absolutely need?<a class="headerlink" href="#what-packages-do-i-absolutely-need" title="Permalink to this headline">#</a></h2>
+<p>Here are some essentials for chemical engineering work:</p>
+<ul class="simple">
+<li><p>NumPy: Numerical Python. Arrays, matrices, numerical operations.</p></li>
+<li><p>SciPy: Scientific algorithms like derivatives, optimization, etc.</p></li>
+<li><p>MatPlotLib: The most basic plotting package.</p></li>
+</ul>
+<p>Here are some others that can be very helpful:</p>
+<ul class="simple">
+<li><p>Pandas: Data structures that allow for data to be easily sorted, manipulated, imported, and exported.</p></li>
+</ul>
+</section>
+<section id="which-python-programs-will-i-use-most-when-translating-from-matlab">
+<h2>Which Python programs will I use most when translating from MATLAB?<a class="headerlink" href="#which-python-programs-will-i-use-most-when-translating-from-matlab" title="Permalink to this headline">#</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>MATLAB</p></th>
+<th class="text-align:left head"><p>Python</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>matrices</p></td>
+<td class="text-align:left"><p>numpy.array</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>plot</p></td>
+<td class="text-align:left"><p>matplotlib.pyplot</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>function</p></td>
+<td class="text-align:left"><p>def</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>ode45</p></td>
+<td class="text-align:left"><p>scipy.integrate.solve_ivp(…method=’RK45’)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>fsolve</p></td>
+<td class="text-align:left"><p>scipy.optimize.fsolve</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>nlinfit</p></td>
+<td class="text-align:left"><p>scipy.optimize.curve_fit</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>fprintf</p></td>
+<td class="text-align:left"><p>print</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
