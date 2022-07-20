@@ -468,7 +468,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_22860</span>\<span class="mf">34579401.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_18044</span>\<span class="mf">34579401.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">###### Import packages</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> 
 <span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -546,41 +546,48 @@ title="Print to PDF"
 <span class="n">soln_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;ODE_solver_output.csv&#39;</span><span class="p">)</span>
 
 <span class="c1">### Report dataframe</span>
-<span class="n">soln_df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
-<span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soln_df</span><span class="p">)</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">cols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s2">&quot;secondary_y&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}],[{</span><span class="s2">&quot;secondary_y&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}],[{</span><span class="s2">&quot;secondary_y&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}]])</span>
+<span class="c1">### Plotting the output with subplots</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span> <span class="c1"># A and B vs time</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span> <span class="c1"># A vs B</span>
 
-<span class="n">xvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-<span class="n">yvals</span> <span class="o">=</span> <span class="n">xvals</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="s1">&#39;--b&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="s1">&#39;:g&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;A or B (units)&#39;</span><span class="p">)</span>
+<span class="c1">#ax1.set_xlim([0,13])</span>
+<span class="c1">#ax1.set_ylim([0,5])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">append_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xvals</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">yvals</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;name of stuff&#39;</span><span class="p">),</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="s1">&#39;-.k&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;B (units)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;A (units)&#39;</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">xvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-<span class="n">yvals</span> <span class="o">=</span> <span class="n">xvals</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span><span class="n">yvals</span><span class="p">)</span>
-
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Time (s)  A (units)  B (units)
+0         0.0  10.000000   0.000000
+1         0.1  10.036696   0.063304
+2         0.2  10.073277   0.126723
+3         0.3  10.109743   0.190257
+4         0.4  10.146094   0.253906
+..        ...        ...        ...
+96        9.6  13.064312   6.535688
+97        9.7  13.091984   6.608016
+98        9.8  13.119581   6.680419
+99        9.9  13.147101   6.752899
+100      10.0  13.174545   6.825455
+
+[101 rows x 3 columns]
+</pre></div>
+</div>
+<img alt="_images/Appendix A - Code Templates_4_1.png" src="_images/Appendix A - Code Templates_4_1.png" />
 </div>
 </div>
 </section>
