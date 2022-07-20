@@ -1,0 +1,779 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 1 &#8212; Chemical Reactor Design</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 2" href="Chapter%202%20-%20Reactor%20types%20and%20design%20equations.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Chemical Reactor Design</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Chapter 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter%202%20-%20Reactor%20types%20and%20design%20equations.html">
+   Chapter 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix%20A%20-%20Code%20Templates.html">
+   Appendix A: Code templates
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix%20B%20-%20Python%20need-to-know%20basics.html">
+   Appendix B: Python need-to-know basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix%20C%20-%20Creating%20interactive%20environments%20with%20Binder.html">
+   Appendix C: Creating interactive environments through Binder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix%20D%20-%20Creating%20a%20Jupyter%20textbook.html">
+   Appendix D: Creating your own Jupyter Book textbook
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/neagan01/eagan_reactor_design_book/main?urlpath=tree/Chapter 1 - Introduction to chemical reaction engineering.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/neagan01/eagan_reactor_design_book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/neagan01/eagan_reactor_design_book/issues/new?title=Issue%20on%20page%20%2FChapter 1 - Introduction to chemical reaction engineering.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Chapter 1 - Introduction to chemical reaction engineering.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-chemical-reaction-engineering">
+   Introduction to chemical reaction engineering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#topics">
+     Topics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reactor-design-within-a-chemical-process">
+     1.1. Reactor design within a chemical process
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#center-fig-1-1-a-basic-block-in-a-chemical-process-flowsheet-center">
+       <center>
+        <strong>
+         Fig. 1-1.
+        </strong>
+        A basic block in a chemical process flowsheet.
+        <center>
+        </center>
+       </center>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-questions-in-chemical-reaction-engineering">
+     1.2. The questions in chemical reaction engineering
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#center-fig-1-2-the-time-scales-of-chemical-reaction-engineering-center">
+       <center>
+        <strong>
+         Fig 1.2.
+        </strong>
+        The time scales of chemical reaction engineering.
+        <center>
+        </center>
+       </center>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-chemical-industry">
+     1.3. The chemical industry
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#center-table-1-1-top-chemical-producers-globally-center">
+       <center>
+        <strong>
+         Table 1.1.
+        </strong>
+        Top chemical producers globally
+        <center>
+        </center>
+       </center>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#center-figure-1-3-selected-major-chemicals-produced-in-the-us-sorted-by-2019-us-production-volume-source-statista-com-center">
+       <center>
+        Figure 1.3. Selected major chemicals produced in the US sorted by 2019 US production volume. Source: statista.com
+        <center>
+        </center>
+       </center>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-we-care">
+     1.4. Why we care
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#looking-ahead-the-layout-of-this-book">
+     1.5. Looking ahead: the layout of this “book”
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 1</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-chemical-reaction-engineering">
+   Introduction to chemical reaction engineering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#topics">
+     Topics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reactor-design-within-a-chemical-process">
+     1.1. Reactor design within a chemical process
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#center-fig-1-1-a-basic-block-in-a-chemical-process-flowsheet-center">
+       <center>
+        <strong>
+         Fig. 1-1.
+        </strong>
+        A basic block in a chemical process flowsheet.
+        <center>
+        </center>
+       </center>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-questions-in-chemical-reaction-engineering">
+     1.2. The questions in chemical reaction engineering
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#center-fig-1-2-the-time-scales-of-chemical-reaction-engineering-center">
+       <center>
+        <strong>
+         Fig 1.2.
+        </strong>
+        The time scales of chemical reaction engineering.
+        <center>
+        </center>
+       </center>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-chemical-industry">
+     1.3. The chemical industry
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#center-table-1-1-top-chemical-producers-globally-center">
+       <center>
+        <strong>
+         Table 1.1.
+        </strong>
+        Top chemical producers globally
+        <center>
+        </center>
+       </center>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#center-figure-1-3-selected-major-chemicals-produced-in-the-us-sorted-by-2019-us-production-volume-source-statista-com-center">
+       <center>
+        Figure 1.3. Selected major chemicals produced in the US sorted by 2019 US production volume. Source: statista.com
+        <center>
+        </center>
+       </center>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-we-care">
+     1.4. Why we care
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#looking-ahead-the-layout-of-this-book">
+     1.5. Looking ahead: the layout of this “book”
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1">
+<h1>Chapter 1<a class="headerlink" href="#chapter-1" title="Permalink to this headline">#</a></h1>
+<section id="introduction-to-chemical-reaction-engineering">
+<h2>Introduction to chemical reaction engineering<a class="headerlink" href="#introduction-to-chemical-reaction-engineering" title="Permalink to this headline">#</a></h2>
+<section id="topics">
+<h3>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h3>
+<p>1.1. Reactor design within a chemical process <br />
+1.2. The questions in chemical reaction engineering <br />
+1.3. The chemical industry <br />
+1.4. Why we care <br />
+1.5. Looking ahead: the layout of this “book”</p>
+</section>
+<section id="reactor-design-within-a-chemical-process">
+<h3>1.1. Reactor design within a chemical process<a class="headerlink" href="#reactor-design-within-a-chemical-process" title="Permalink to this headline">#</a></h3>
+<p>In this “book” we aim to understand the chemical reactor, the unit which often finds itself at the heart of chemical engineering processes. Ultimately it is here that we chemically transform species fed into a process to one or more chemically distinct entities.</p>
+<p>Before we venture to understand these units and the reactions occuring within them, we need to understand a bit about chemical engineering processes and where reactor design fits in.</p>
+<p>Below Fig. 1-1 shows a general block in a process flowsheet. Crossing the border of this block are (1) a feed entering the system, (2) desired products exiting, (3) unconverted reactants exiting, (4) undesired products exiting, and (5) energy transfer (either in or out).</p>
+<p>This process is highly generalized. It may simulate, for example, a full industrial process, a single block within a process, an organism (or part of one), an environmental system. The feeds can therefore include both raw materials and processed materials, the latter of which can be obtained from a previous block or a different process entirely. The intent of this system as a whole may be to (1) convert a lower-cost or lower-demand chemical feedstock to a higher-value or higher-demand product, (2) decompose a harmful material to one which is more benign, or (3) to generate energy and thus power a process or an organism. As such the “reactor” can be anything ranging from a formal chemical reactor to an engine to a living cell to a lake. The reactor outlet may then need further processing, including separations and recycle loops. When we design a chemical reactor, we must therefore keep in mind that separations will be a key part in determining how feasible our process is; the reactor alone will not tell us all we need to know.</p>
+<p><img alt="C1-F1" src="_images/C1-F1.png" /></p>
+<section id="center-fig-1-1-a-basic-block-in-a-chemical-process-flowsheet-center">
+<h4><center> <strong>Fig. 1-1.</strong> A basic block in a chemical process flowsheet. <center><a class="headerlink" href="#center-fig-1-1-a-basic-block-in-a-chemical-process-flowsheet-center" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="the-questions-in-chemical-reaction-engineering">
+<h3>1.2. The questions in chemical reaction engineering<a class="headerlink" href="#the-questions-in-chemical-reaction-engineering" title="Permalink to this headline">#</a></h3>
+<p>What are we typically asking questions about in chemical reaction engineering?</p>
+<ul class="simple">
+<li><p><strong>Chemistry:</strong> nature of a chemical transformation including the “mechanism” and “pathway”</p></li>
+<li><p><strong>Reaction rates:</strong> the speed of transformation</p></li>
+<li><p><strong>Selectivity:</strong> the fraction of the feed going to a desired product vs an undesired one</p></li>
+<li><p><strong>Reactor:</strong> the basic mode of operation (batch vs continuous), general flow pattern (fully mixed vs plug flow), advanced configurations (e.g., membrane reactors), size, energy requirements, cost, safety</p></li>
+</ul>
+<p>All of these can depend heavily on reaction conditions such as temperature, pressure, and the phase of matter.</p>
+<p>How do we address these questions? The “toolkit” we use includes:</p>
+<ul class="simple">
+<li><p>Material balances</p></li>
+<li><p>Rate expressions from mechanisms and experimental data</p></li>
+<li><p>Thermodynamics (e.g., chemical equilibrium)</p></li>
+<li><p>Energy balances</p></li>
+<li><p>Mass transport equations</p></li>
+</ul>
+<p>What time scales are we typically operating in? Generally we will have to consider one or more vastly different time scales at a time ranging from the very short (bond breaking events on the order of picoseconds) to the very long (industrial processes on the order of days to years). These are generally summarized below in Fig. 1.2.</p>
+<p><img alt="C1-F2" src="_images/C1-F2.png" /></p>
+<section id="center-fig-1-2-the-time-scales-of-chemical-reaction-engineering-center">
+<h4><center> <strong>Fig 1.2.</strong> The time scales of chemical reaction engineering. <center><a class="headerlink" href="#center-fig-1-2-the-time-scales-of-chemical-reaction-engineering-center" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="the-chemical-industry">
+<h3>1.3. The chemical industry<a class="headerlink" href="#the-chemical-industry" title="Permalink to this headline">#</a></h3>
+<p>It is helpful to know generally who is making the chemicals we depend on and what those chemicals are. The top 10 chemical companies by revenue in 2019 according to <a class="reference external" href="http://thomasnet.com">thomasnet.com</a> and <a class="reference external" href="http://statista.com">statista.com</a> are shown below in Table 1.1.</p>
+<section id="center-table-1-1-top-chemical-producers-globally-center">
+<h4><center> <strong>Table 1.1.</strong> Top chemical producers globally <center><a class="headerlink" href="#center-table-1-1-top-chemical-producers-globally-center" title="Permalink to this headline">#</a></h4>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Top 10 Chemical Companies</p></th>
+<th class="text-align:center head"><p>Country</p></th>
+<th class="text-align:center head"><p>2019 Revenue (billion $USD)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>1.  BASF</p></td>
+<td class="text-align:center"><p>Germany</p></td>
+<td class="text-align:center"><p>66</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2.  Sinopec</p></td>
+<td class="text-align:center"><p>China</p></td>
+<td class="text-align:center"><p>62</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>3.  Dow</p></td>
+<td class="text-align:center"><p>USA</p></td>
+<td class="text-align:center"><p>43</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4.  Sabic</p></td>
+<td class="text-align:center"><p>Saudi Arabia</p></td>
+<td class="text-align:center"><p>34</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>5.  Ineos</p></td>
+<td class="text-align:center"><p>UK</p></td>
+<td class="text-align:center"><p>32</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>6.  Formosa Plastics</p></td>
+<td class="text-align:center"><p>China</p></td>
+<td class="text-align:center"><p>31</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>7.  LyondellBassell</p></td>
+<td class="text-align:center"><p>Netherlands</p></td>
+<td class="text-align:center"><p>27</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>8.  Mitsubishi Chemical</p></td>
+<td class="text-align:center"><p>Japan</p></td>
+<td class="text-align:center"><p>27</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>9.  ExxonMobil</p></td>
+<td class="text-align:center"><p>USA</p></td>
+<td class="text-align:center"><p>27</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>10. LG Chem</p></td>
+<td class="text-align:center"><p>South Korea</p></td>
+<td class="text-align:center"><p>25</p></td>
+</tr>
+</tbody>
+</table>
+<p>Other major companies in the USA include Dupont and PPG in the 10-25 billion USD range and Air Products, Chevron Phillips, Eastman, Ecolab, Mosaic, Westlake, Hunstman, Univar, and Celanese in the 5-10 billion USD range. This list is by no means complete, however.</p>
+<p>What chemicals do we make in the US? Below Fig 1.3. shows select chemicals obtained from <a class="reference external" href="http://statista.com">statista.com</a> and their 2019 US production volumes, though the list is by no means complete. For example, it is missing the #1 chemical produced globally: sulfuric acid.</p>
+<p><img alt="C1-F3" src="_images/C1-F3.png" /></p>
+</section>
+<section id="center-figure-1-3-selected-major-chemicals-produced-in-the-us-sorted-by-2019-us-production-volume-source-statista-com-center">
+<h4><center> Figure 1.3. Selected major chemicals produced in the US sorted by 2019 US production volume. Source: <a class="reference external" href="http://statista.com">statista.com</a> <center><a class="headerlink" href="#center-figure-1-3-selected-major-chemicals-produced-in-the-us-sorted-by-2019-us-production-volume-source-statista-com-center" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="why-we-care">
+<h3>1.4. Why we care<a class="headerlink" href="#why-we-care" title="Permalink to this headline">#</a></h3>
+<p>There are a lot of motivations for chemical reactor design, but we can list a few examples below:</p>
+<ul class="simple">
+<li><p><strong>Sustainability</strong>: Improving reactor designs can lead to lower energy consumption and lessened pollution. The purpose of many reactors is in fact solely to mitigate pollution (such as the catalytic converter in cars). Furthermore, designing novel reactors, processes, and catalysts to accelerate reactions, we can enable the use of more sustainable feedstocks than many of the non-renewable ones we rely upon today.</p></li>
+<li><p><strong>Health</strong>: By understanding the chemical reactions occuring in humans, animals, and nature, we can develop therapies to improve health and wellness.</p></li>
+<li><p><strong>Profit</strong>: Small improvements in reactor design can translate to large changes in process economics, in part because we may be designing very large scale processes. Whatever your motivation, profit will inevitably be a major driving force in your efforts. Ultimately money will talk, so if you care about sustainability or health your challenge will be to develop technologies which address these areas while also generating a profit.</p></li>
+</ul>
+</section>
+<section id="looking-ahead-the-layout-of-this-book">
+<h3>1.5. Looking ahead: the layout of this “book”<a class="headerlink" href="#looking-ahead-the-layout-of-this-book" title="Permalink to this headline">#</a></h3>
+<p>This book was developed to support an undergraduate chemical engineering course focused on chemical reactor design. This course is divided into the following three modules:</p>
+<ol class="simple">
+<li><p>Isothermal reactor design with a single reaction (chapters 2-6)</p></li>
+<li><p>Multiple reactions and non-isothermal reactions (chapters 7-14)</p></li>
+<li><p>Reaction mechanisms and catalysis (chapters 15-19)</p></li>
+</ol>
+<p>This breakdown is useful for guiding a course, but it may not be conducive to your uses and therefore will not generally be discussed again. Instead, the book is broken down into the following chapters, each of which contains the material corresponding to approximately one-three 75-minute lectures:</p>
+<ol class="simple">
+<li><p>Introduction to chemical reaction engineering</p></li>
+<li><p>Reactor types and design equations</p></li>
+<li><p>Conversion, sizing basics, rate expressions, and kinetic theories</p></li>
+<li><p>Reaction equilibrium and reversible reactions</p></li>
+<li><p>Reactor design examples</p></li>
+<li><p>Generating rate expressions from experimental data</p></li>
+<li><p>Multiple reaction basics</p></li>
+<li><p>Parallel reactions</p></li>
+<li><p>Series reactions</p></li>
+<li><p>Mixed multiple reactions</p></li>
+<li><p>Bioreactor basics</p></li>
+<li><p>Energy balances and adiabatic reactors</p></li>
+<li><p>Heat exchange in reactors</p></li>
+<li><p>Non-steady state energy balances and runaway reactions</p></li>
+<li><p>Reaction mechanisms and catalysis</p></li>
+<li><p>Enzyme kinetics</p></li>
+<li><p>Heterogeneous catalysis basics</p></li>
+<li><p>Surface reaction kinetics</p></li>
+<li><p>Diffusion limitations in heterogeneous catalysis</p></li>
+<li><p>Outlook</p></li>
+</ol>
+<p>To solve the problems presented in this course, both analytical and numerical methods will need to be applied. Numerical solutions will be obtained with Python-based packages. A basic understanding of Python will be required to complete the course. While there are a wide variety of resources online which you can consult to learn these skills, particularly useful ones for chemical engineering include (1) pycse and various other resources by Dr. John Kitchin of Carnegie Mellon University and (2) online materials for the “Programming for Engineers” course taught by Dr. John Hedengren of Brigham Young University.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter%202%20-%20Reactor%20types%20and%20design%20equations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Nathaniel Eagan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

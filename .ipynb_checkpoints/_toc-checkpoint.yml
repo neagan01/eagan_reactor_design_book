@@ -1,0 +1,13 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: Chapter 1 - Introduction to chemical reaction engineering
+- file: Chapter 2 - Reactor types and design equations
+- file: Appendix A - Code Templates
+- file: Appendix B - Python need-to-know basics
+- file: Appendix C - Creating interactive environments with Binder
+- file: Appendix D - Creating a Jupyter textbook
+
