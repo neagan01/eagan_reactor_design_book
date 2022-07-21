@@ -385,8 +385,8 @@ title="Print to PDF"
 <li><p>Edit cell 3 to represent desired scenario.</p></li>
 <li><p>Run cell 4 to generate plots of reactor simulation.</p></li>
 </ol>
-<p><em>Note 1: this code is written to be understandable moreso than computationally efficient; it runs fast enough nonetheless.</em>
-*Note 2: a “true divide” error may be thrown if attempting to divide by zero when generating selectivity/yield/reaction quotients. Do not worry about these</p>
+<p><em>Note 1: this code is written to be understandable moreso than computationally efficient; it runs fast enough nonetheless.</em></p>
+<p><em>Note 2: a “true divide” error may be thrown if attempting to divide by zero when generating selectivity/yield/reaction quotients. Do not worry about these; the code will run fine</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">########## Cell 2: Import key packages ##########</span>
@@ -399,7 +399,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_20780</span>\<span class="mf">3439332674.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_15756</span>\<span class="mf">3439332674.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">########## Cell 2: Import key packages ##########</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                     <span class="c1"># convenient data structures and math functions</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>        <span class="c1"># plotting</span>
@@ -730,7 +730,8 @@ C:\Users\neaga\AppData\Local\Temp\ipykernel_3256\2761356569.py:214: RuntimeWarni
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\neaga\anaconda3\lib\site-packages\ipykernel_launcher.py:45: RuntimeWarning: divide by zero encountered in log
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\neaga\AppData\Local\Temp\ipykernel_3256\1749664682.py:45: RuntimeWarning: divide by zero encountered in log
+  ax5.plot(W,np.log(r3),&#39;-.y&#39;)
 </pre></div>
 </div>
 <img alt="_images/Appendix E - Culminating example_3_1.png" src="_images/Appendix E - Culminating example_3_1.png" />

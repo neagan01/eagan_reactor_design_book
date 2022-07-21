@@ -25,7 +25,8 @@
 # 3. Run cell 4 to generate plots of reactor simulation.
 # 
 # *Note 1: this code is written to be understandable moreso than computationally efficient; it runs fast enough nonetheless.*
-# *Note 2: a "true divide" error may be thrown if attempting to divide by zero when generating selectivity/yield/reaction quotients. Do not worry about these
+# 
+# *Note 2: a "true divide" error may be thrown if attempting to divide by zero when generating selectivity/yield/reaction quotients. Do not worry about these; the code will run fine*
 
 # In[1]:
 
@@ -36,7 +37,7 @@ import matplotlib.pyplot as plt        # plotting
 from scipy.integrate import solve_ivp  # ODE solver
 
 
-# In[2]:
+# In[4]:
 
 
 ########## Cell 3: Reactor simulation ##########
@@ -282,7 +283,7 @@ print('Final conversion:','{0:,.2f}'.format(X_FA[-1]))
 print('Final H2/H2O selectivity:','{0:,.1f}'.format(S_H2_H2O[-1]))
 
 
-# In[3]:
+# In[5]:
 
 
 ########## Cell 4: Generate plots ##########
