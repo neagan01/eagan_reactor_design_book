@@ -37,7 +37,7 @@ import matplotlib.pyplot as plt        # plotting
 from scipy.integrate import solve_ivp  # ODE solver
 
 
-# In[4]:
+# In[2]:
 
 
 ########## Cell 3: Reactor simulation ##########
@@ -283,7 +283,7 @@ print('Final conversion:','{0:,.2f}'.format(X_FA[-1]))
 print('Final H2/H2O selectivity:','{0:,.1f}'.format(S_H2_H2O[-1]))
 
 
-# In[5]:
+# In[3]:
 
 
 ########## Cell 4: Generate plots ##########
