@@ -10,4 +10,4 @@ chapters:
 - file: Appendix B - Python need-to-know basics
 - file: Appendix C - Creating interactive environments with Binder
 - file: Appendix D - Creating a Jupyter textbook
-
+- file: Appendix E - Culminating example
