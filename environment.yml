@@ -1,0 +1,11 @@
+name: reactor_design_book
+channels:
+  - default
+dependencies:
+  - python=3.8
+  - pip
+  - pandas
+  - matplotlib
+  - scipy
+  #- pip:
+  #    - jupyter-book
