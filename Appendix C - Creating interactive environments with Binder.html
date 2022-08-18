@@ -415,7 +415,7 @@ title="Print to PDF"
 <li><p>Kaggle Kernels</p></li>
 </ul>
 <p>I could go over the pros and cons of these, but I don’t feel like it right now. Instead I’ll just talk about Binder because it’s what I have used the most.</p>
-<p>The pros of Binder include that it’s free, it has easy integration with GitHub and JupyterBooks, and it opens up your notebooks in a JupyterLab environment, making it easy to work with. The cons include the limited RAM (2 GB) and its tendency to time out in 5 minutes of inactivity. It is therefore meant primarily for active use.</p>
+<p>The pros of Binder include that it’s free, it has easy integration with GitHub and JupyterBooks, and it opens up your notebooks in a JupyterLab environment, making it easy to work with. The cons include the limited RAM (2 GB) and its tendency to time out in 5 minutes of inactivity. It is therefore meant primarily for active use. Binder environments can be accessed and used on many different devices, including cell phones!</p>
 </section>
 <section id="creating-a-binder-environment">
 <h2>Creating a Binder environment<a class="headerlink" href="#creating-a-binder-environment" title="Permalink to this headline">#</a></h2>
@@ -432,7 +432,7 @@ pandas==1.0.1</p></li>
 <li><p>When you want changes to be pushed to the online, publically-available version, open the desktop app, press “commit to main” to put these in your main branch, and then press “Push origin” to send them online. The online repository will then be udpated.</p></li>
 <li><p>Go to <a class="reference external" href="http://mybinder.org">mybinder.org</a> to create your binder environment. Input the repository location next to where it says “GitHub.” This should be something like username/my_repo.</p></li>
 <li><p>Press “Launch” to create the environment. Whenever large changes are made to the repository, the first build after these changes may take a while. Subsequent access of a “built” environment will be substantially faster.</p></li>
-<li><p>Access the binder environment at the link provided, which should be something like: <a class="reference external" href="https://mybinder.org/v2/gh/username/my_repo/HEAD">https://mybinder.org/v2/gh/username/my_repo/HEAD</a>. Note that you can actually skip steps 5 and 6 by directly entering this URL, which will force Binder to create ht</p></li>
+<li><p>Access the binder environment at the link provided, which should be something like: <a class="reference external" href="https://mybinder.org/v2/gh/username/my_repo/HEAD">https://mybinder.org/v2/gh/username/my_repo/HEAD</a>. Note that you can actually skip steps 5 and 6 by directly entering this URL, which will force Binder to try to create the environment.</p></li>
 <li><p>To make it easy to access this Binder directly from the GitHub repo page, consider adding the following to your <a class="reference external" href="http://README.md">README.md</a> file:</p></li>
 </ol>
 <pre>
